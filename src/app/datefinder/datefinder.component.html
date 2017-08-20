@@ -1,0 +1,40 @@
+
+
+
+<div class="monthnav">
+  <button (click)="changeTargetMonth(-1, $event)"> < </button>
+  <h3>{{targetMonth | date:'MMM yy'}}</h3>
+  <button (click)="changeTargetMonth(1, $event)"> > </button>
+  <button (click)="changeTargetMonth(0, $event)">Today</button>
+</div>
+
+
+
+<div class="wrapper" id="cal-wrapper">
+  <div class="coltitle"  id="coltitle" (click)="calClick($event)">
+    <div class="mon" id="mon">M</div>
+    <div class="tue" id="tue">T</div>
+    <div class="wed" id="wed">W</div>
+    <div class="thu" id="thu">T</div>
+    <div class="fri" id="fri">F</div>
+    <div class="sat" id="sat">S</div>
+    <div class="sun" id="sun">S</div>
+  </div>
+  <div class="rowtitle" id="rowtitle" (click)="calClick($event)">
+    <!--<div class="week" *ngFor="let week of gridWeeks; let i = index"-->
+      <!--&gt;{{week}}</div>-->
+    <div class="week" id="wk1">wk1</div>
+    <div class="week" id="wk2">wk2</div>
+    <div class="week" id="wk3">wk3</div>
+    <div class="week" id="wk4">wk4</div>
+    <div class="week" id="wk5" *ngIf="numGridDays > 28">wk5</div>
+    <div class="week" id="wk6" *ngIf="numGridDays> 35">wk6</div>
+  </div>
+  <div class="calendar" id="calendar">
+  <div *ngFor="let day of newgd | gridobjAsArray"
+         ngClass="cal {{day.weeknum}} {{day.weekday}} {{day.today}} {{day.selState}} {{day.pastState}}"
+         id="{{day.dateid}}"
+          (click)="calClick($event)">{{day.day}}</div>
+  </div>
+</div>
+

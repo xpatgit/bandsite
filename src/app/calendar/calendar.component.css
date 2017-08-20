@@ -1,0 +1,58 @@
+* {
+  font-family: Arial;
+}
+
+.calendar thead tr td {
+  border: solid 1px;
+  border-collapse: collapse;
+}
+
+.mon, .tue, .wed, .thu, .fri, .sat, .sun {
+  text-align: center;
+}
+
+/*
+.wrapper * {
+  background: #ccc;
+}
+*/
+
+.wrapper {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(8,1fr);
+  text-align: center;
+  /*align-items: center;
+  justify-items: center;*/
+  grid-auto-rows: minmax(20px, 30px);
+}
+
+.wrapper * {
+  padding: 5px;
+}
+
+.topleft {
+  background: #fff;
+}
+
+.coltitle {
+  background: darkolivegreen;
+}
+
+.rowtitle {
+  background: cadetblue;
+}
+
+/* test some singling out */
+
+.day {
+  background: orange;
+}
+
+.wed.day {
+  background: lightgrey;
+}
+
+.wk4.day {
+  background: red;
+}

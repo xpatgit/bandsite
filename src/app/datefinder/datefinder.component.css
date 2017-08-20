@@ -1,0 +1,73 @@
+* {
+  font-family: "Arial";
+  font-size: medium;
+}
+
+.monthnav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items: center;
+}
+
+
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-column: 2/9;
+  grid-gap: 4px;
+}
+
+.coltitle {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  grid-column: 2/9;
+  /*text-align: center;*/
+  grid-gap: 4px;
+}
+
+.rowtitle {
+  display: grid;
+  grid-row: 2/8;
+  grid-gap: 4px;
+  /*text-align: center;*/
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  grid-gap: 4px;
+  grid-column: 2/9;
+  grid-row: 2/8;
+  font-weight: bold;
+  color: black;
+}
+
+.calendar>*, .rowtitle>*, .coltitle>* {
+  background: #ccc;
+  /*grid-gap: 4px;*/
+  text-align: center;
+  padding: 4px;
+}
+
+.rowtitle>div, .coltitle>div {
+  background: dimgrey;
+  color: white;
+}
+
+.cal.today {
+  background: green;
+  color: white;
+}
+
+.selected.cal {
+  background: white !important;
+  color: lightgrey;
+  font-style: italic;
+  font-weight: lighter;
+}
+
+.cal.past {
+  color: white;
+}
