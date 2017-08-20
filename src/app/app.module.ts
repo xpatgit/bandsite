@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { DatefinderComponent } from './datefinder/datefinder.component';
 import { GridobjAsArrayPipe } from './pipes/gridobj-as-array.pipe';
+import { EventManagerComponent } from './event-manager/event-manager.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CalendarComponent,
     DatefinderComponent,
-    GridobjAsArrayPipe
+    GridobjAsArrayPipe,
+    EventManagerComponent
   ],
   imports: [
     BrowserModule,
