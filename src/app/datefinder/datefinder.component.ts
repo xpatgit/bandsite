@@ -119,8 +119,6 @@ export class DatefinderComponent implements OnInit {
       // increment to next day
       d.setDate(d.getDate() + 1);
     }
-    // todo: this should be temp, but return an array for use with ngFor
-    // this.ngForGridArray = this.getGridObjAsArray();
 
     // reset the target month
     this.targetMonth = monthDate;
@@ -133,7 +131,7 @@ export class DatefinderComponent implements OnInit {
 
     switch (target.parentElement.id) {
       case 'calendar':
-        if (this.newgd[target.id].selState !== 'selected') {
+        if (this.newgd[target.id].selState !== 'selected' && this.newgd[target.id].pastState !== 'past') {
           this.newgd[target.id].selState = 'selected';
           this.unavailable[target.id] = true;
         } else {
@@ -152,7 +150,7 @@ export class DatefinderComponent implements OnInit {
         }
         // now reflect this in those weekdays in newgd: key is the dateid
         for (const key in this.newgd) {
-          if (this.newgd[key].weekday === day) {
+          if (this.newgd[key].weekday === day && this.newgd[key].pastState !== 'past') {
             this.newgd[key].selState = this.weekdaysSelected[day];
 
               // also update the 'unavailable' list
@@ -175,7 +173,7 @@ export class DatefinderComponent implements OnInit {
         }
         // now reflect this in those weeks in newgd: key is the dateid
         for (const key in this.newgd) {
-          if (this.newgd[key].weeknum === week) {
+          if (this.newgd[key].weeknum === week && this.newgd[key].pastState !== 'past') {
             this.newgd[key].selState = this.weeksSelected[week];
 
             // also update the 'unavailable' list
@@ -191,6 +189,7 @@ export class DatefinderComponent implements OnInit {
       default:
         break;
     }
+    console.log(this.unavailable);
   }
 
 

@@ -61,7 +61,7 @@
   color: white;
 }
 
-.selected.cal {
+.selected.cal:not(.past) {
   background: white !important;
   color: lightgrey;
   font-style: italic;
