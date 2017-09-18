@@ -10,6 +10,7 @@ import {GridDay} from "../grid-day";
 export class DatefinderComponent implements OnInit {
 
   targetMonth: Date;
+  // todo: rename newgd
   newgd: object = {};   // will <dateid>:<GridDay> e.g. {123: GridDay1, 234: GridDay2} where the dateid is the field/key name
   weekdaysSelected = {};    // will hold col class names (eg. tue etc.) where those whole weekday cols have been selected.
   weeksSelected = {};    // will hold row class names (eg. wk2 etc.) where those whole weeknum rows have been selected.
@@ -23,6 +24,9 @@ export class DatefinderComponent implements OnInit {
 
   ngOnInit() {
     this.targetMonth = new Date();   // defaults to today
+    // this.targetMonth.setHours(0, 0, 0, 0);  // midnight
+    // this.targetMonth.setDate(1);  // first of month
+    console.log(this.targetMonth);  // todo: remove
     this.createGridDays(this.targetMonth);
   }
 
@@ -38,6 +42,7 @@ export class DatefinderComponent implements OnInit {
     } else {
       // todo: should only work for months from current onwards
       this.targetMonth.setMonth(this.targetMonth.getMonth() + direction);
+      this.targetMonth.setHours(2);   // todo: this is a hack to get round GMT/BST hour changes!
     }
     this.createGridDays(this.targetMonth);
   }
@@ -63,6 +68,7 @@ export class DatefinderComponent implements OnInit {
     // set monthDate to 1st of month   todo: must be a better way of stripping time from date?
     monthDate.setDate(1);
     monthDate = this.stripTime(monthDate);
+    console.log(monthDate);   // todo: remove
 
     // based on day of week, get days before and after target month to fill grid
     let gridFirstDate = new Date(monthDate), gridLastDate = new Date(monthDate);
@@ -198,7 +204,7 @@ export class DatefinderComponent implements OnInit {
     return isNaN(dayOfWeek) ? null : ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'][dayOfWeek];
   }
 
-  // returns a date with time stripped using ISO format
+  // returns a date with time stripped using ISO format   todo: must be a better way of doing this - creates problems with seasonal spring/fall changes
   stripTime(date: Date) {
     const strDate = date.toISOString().slice(0,10);
     return new Date(strDate);
